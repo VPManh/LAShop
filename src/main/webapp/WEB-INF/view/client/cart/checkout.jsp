@@ -50,11 +50,11 @@
 
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
-    <h1 class="text-center text-white display-6" style="margin-top: 90px !important">Checkout</h1>
+    <h1 class="text-center text-white display-6" style="margin-top: 90px !important">Thanh toán</h1>
     <ol class="breadcrumb justify-content-center mb-0" >
-        <li class="breadcrumb-item" ><a href="/">Home</a></li>
-        <li class="breadcrumb-item" ><a href="/cart">Cart</a></li>
-        <li class="breadcrumb-item active text-white">Checkout</li>
+        <li class="breadcrumb-item" ><a href="/">Trang chủ</a></li>
+        <li class="breadcrumb-item" ><a href="/cart">Giỏ hàng</a></li>
+        <li class="breadcrumb-item active text-white">Thanh toán</li>
     </ol>
 </div>
 <!-- Single Page Header End -->

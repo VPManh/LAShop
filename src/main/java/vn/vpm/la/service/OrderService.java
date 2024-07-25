@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.vpm.la.domain.Order;
 import vn.vpm.la.domain.OrderDetail;
+import vn.vpm.la.domain.User;
 import vn.vpm.la.repository.OrderDetailRepository;
 import vn.vpm.la.repository.OrderRepository;
 
@@ -51,6 +52,10 @@ public class OrderService {
             orderToUpdate.setStatus(order.getStatus());
             this.orderRepository.save(orderToUpdate);
         }
+    }
+
+    public List<Order> fetchOrderByUser(User user) {
+        return this.orderRepository.findByUser(user);
     }
 
 }

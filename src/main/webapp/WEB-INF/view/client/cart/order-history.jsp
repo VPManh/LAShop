@@ -46,19 +46,20 @@
 <!-- Spinner End -->
 
 <jsp:include page="../layout/header.jsp" />
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6" style="margin-top: 90px !important">Lịch sử mua hàng</h1>
+    <ol class="breadcrumb justify-content-center mb-0" >
+        <li class="breadcrumb-item" ><a href="/">Trang chủ</a></li>
+<%--        <li class="breadcrumb-item" ><a href="/cart">Cart</a></li>--%>
+        <li class="breadcrumb-item active text-white">Lịch sử mua hàng</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
 
 <!-- Cart Page Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
-        <div class="mb-3">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Lịch sử mua hàng</li>
-                </ol>
-            </nav>
-        </div>
-
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -82,6 +83,7 @@
                 <c:forEach var="order" items="${orders}">
                     <tr>
                         <td colspan="2">Order Id = ${order.id}</td>
+<%--                        <td colspan="2" >Đơn hàng thứ  của bạn</td>--%>
                         <td colspan="1">
                             <fmt:formatNumber type="number" value=" ${order.totalPrice}" />
                             đ

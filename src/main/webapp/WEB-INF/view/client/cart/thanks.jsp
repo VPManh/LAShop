@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Cart - LaptopShop </title>
+    <title> Thanks - LaptopShop </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -47,7 +47,7 @@
 <!-- Spinner End -->
 
 <div class="container" style="margin-top: 100px">
-    <div class="row" >
+    <div class="row">
         <div class="col-12 mt-5">
 
             <div class="alert alert-success" role="alert">
@@ -55,10 +55,14 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <jsp:include page="../layout/feature.jsp"/>
-
+            <div class="mt-4" style="margin-top: -4.5rem !important; margin-left: 120px">
+                <i class="fas fa-arrow-left"></i>
+                <a href="/">Quay lại trang chủ</a>
+            </div>
 
 
 <!-- JavaScript Libraries -->

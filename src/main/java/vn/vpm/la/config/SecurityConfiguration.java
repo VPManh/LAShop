@@ -64,7 +64,7 @@ public class SecurityConfiguration {
                         .permitAll()
 
                         .requestMatchers("/", "/login", "/product/**", "/client/**", "/css/**", "/js/**",
-                                "/images/**")
+                                "/images/**" , "/register")
                         .permitAll()
 
                         // Khi sử dụng Method hasRole thì nó sẽ bỏ đi tiền tố ROLE_ nên t phải cấu hình

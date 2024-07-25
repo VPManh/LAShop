@@ -45,17 +45,19 @@
                 <!-- Spinner End -->
 
                 <jsp:include page="../layout/header.jsp" />
-
-
+                <div class="container-fluid page-header py-5">
+                    <h1 class="text-center text-white display-6" style="margin-top: 90px !important">Chi tiết sản phẩm</h1>
+                    <ol class="breadcrumb justify-content-center mb-0" >
+                        <li class="breadcrumb-item" ><a href="/">Trang chủ</a></li>
+                        <%--        <li class="breadcrumb-item" ><a href="/cart">Cart</a></li>--%>
+                        <li class="breadcrumb-item active text-white">Chi tiết sản phẩm</li>
+                    </ol>
+                </div>
                 <!-- Single Product Start -->
                 <div class="container-fluid py-5 mt-5" style="margin-top: 4rem !important;">
                    
                     <div class="container py-5">
                         <div class="row g-4 mb-5">
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active"><a href="/">Trang chủ</a></li>
-                                <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
-                            </ol>
                             <div class="col-lg-8 col-xl-9">
                                 <div class="row g-4">
                                     <div class="col-lg-6">
@@ -86,17 +88,30 @@
                                                     <i class="fa fa-minus"></i>
                                                 </button>
                                             </div>
-                                            <input type="text" class="form-control form-control-sm text-center border-0"
-                                                value="1">
+                                            <input type="text"
+                                                   class="form-control form-control-sm text-center border-0" value="1"
+                                                   data-cart-detail-index = "0" >
                                             <div class="input-group-btn">
                                                 <button class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
                                             </div>
                                         </div>
-                                        <a href="#"
-                                            class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
-                                                class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                        <form action="/add-product-from-view-detail" method="post">
+<%--                                            bo phaanf modelAttribute="productDetail"--%>
+                                            <input type="hidden" name="${_csrf.parameterName}"
+                                                   value="${_csrf.token}" />
+                                            <input class="form-control d-none" type="text" value="${productDetail.id}"
+                                                   name="id" />
+
+                                            <input class="form-control d-none" type="text" name="quantity"
+                                                   id="cartDetails0.quantity" />
+                                            <button
+                                                    class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
+                                                    class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                Add to cart
+                                            </button>
+                                        </form>
                                     </div>
                                     <div class="col-lg-12">
                                         <nav>
@@ -111,60 +126,6 @@
                                             <div class="tab-pane active" id="nav-about" role="tabpanel"
                                                 aria-labelledby="nav-about-tab">
                                                 <p>${productDetail.detailDesc}</p>
-
-                                                <!-- phần Table -->
-
-                                                <!-- <div class="px-2">
-                                                    <div class="row g-4">
-                                                        <div class="col-6">
-                                                            <div
-                                                                class="row bg-light align-items-center text-center justify-content-center py-2">
-                                                                <div class="col-6">
-                                                                    <p class="mb-0">Weight</p>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <p class="mb-0">1 kg</p>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="row text-center align-items-center justify-content-center py-2">
-                                                                <div class="col-6">
-                                                                    <p class="mb-0">Country of Origin</p>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <p class="mb-0">Agro Farm</p>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="row bg-light text-center align-items-center justify-content-center py-2">
-                                                                <div class="col-6">
-                                                                    <p class="mb-0">Quality</p>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <p class="mb-0">Organic</p>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="row text-center align-items-center justify-content-center py-2">
-                                                                <div class="col-6">
-                                                                    <p class="mb-0">Сheck</p>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <p class="mb-0">Healthy</p>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="row bg-light text-center align-items-center justify-content-center py-2">
-                                                                <div class="col-6">
-                                                                    <p class="mb-0">Min Weight</p>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <p class="mb-0">250 Kg</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
                                             </div>
                                             <div class="tab-pane" id="nav-mission" role="tabpanel"
                                                 aria-labelledby="nav-mission-tab">

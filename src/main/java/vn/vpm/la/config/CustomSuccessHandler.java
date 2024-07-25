@@ -23,7 +23,7 @@ import vn.vpm.la.service.UserService;
 public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
     @Autowired
-    private UserService userService;
+    private  UserService userService;
 
     // public CustomSuccessHandler(UserService userService) {
     // this.userService = userService;

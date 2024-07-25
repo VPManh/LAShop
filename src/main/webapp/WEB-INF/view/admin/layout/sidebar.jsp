@@ -27,7 +27,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Hỏi Dân IT
+                        Manhvan2003
                     </div>
             </nav>
         </div>
