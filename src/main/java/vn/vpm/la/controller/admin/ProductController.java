@@ -2,6 +2,9 @@ package vn.vpm.la.controller.admin;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,9 +36,17 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product")
-    public String getDashboard(Model model){
-        List<Product> lists = this.productService.getAllProduct();
-        model.addAttribute("products", lists);
+    public String getDashboard(Model model,@RequestParam(required=false,name="page") int page){
+
+        Pageable pageable = PageRequest.of(page - 1,5);
+
+        Page<Product> productPage = this.productService.getAllProduct(pageable);
+        List<Product> listProduct = productPage.getContent();
+        model.addAttribute("products", listProduct);
+
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+
         return "admin/product/show";
     }
 
