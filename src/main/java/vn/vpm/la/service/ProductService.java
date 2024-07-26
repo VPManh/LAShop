@@ -42,6 +42,10 @@ public class ProductService {
         return this.productRepository.findAll(pageable);
     }
 
+    public List<Product> getTop8Products() {
+        return this.productRepository.findTop8ByOrderByIdAsc();
+    }
+
     public Optional<Product> getfindByIdProduct(long id) {
         return this.productRepository.findById(id);
     }

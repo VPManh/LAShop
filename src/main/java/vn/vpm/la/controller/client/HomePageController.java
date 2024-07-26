@@ -47,14 +47,10 @@ public class HomePageController {
     }
 
     @GetMapping("/")
-    public String getHomepage(Model model, @RequestParam("page") int page) {
+    public String getHomepage(Model model) {
 
-        Pageable pageable = PageRequest.of(page,10);
-
-        Page<Product> products = this.productService.getAllProduct(pageable);
-
-        List<Product> productList = products.getContent();
-        model.addAttribute("products", productList);
+        List<Product> listProduct = this.productService.getTop8Products();
+        model.addAttribute("products", listProduct);
         return "client/homepage/show";
     }
 

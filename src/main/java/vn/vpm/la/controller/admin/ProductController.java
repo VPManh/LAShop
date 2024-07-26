@@ -1,6 +1,7 @@
 package vn.vpm.la.controller.admin;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,7 +37,17 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product")
-    public String getDashboard(Model model,@RequestParam(required=false,name="page") int page){
+    public String getDashboard(Model model,@RequestParam("page") Optional<String> optionalS){
+
+        int page = 1;
+
+        try {
+            if (optionalS.isPresent()){
+                page = Integer.parseInt(optionalS.get());
+            }
+        }catch (Exception e){
+
+        }
 
         Pageable pageable = PageRequest.of(page - 1,5);
 
