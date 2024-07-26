@@ -2,6 +2,8 @@ package vn.vpm.la.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vn.vpm.la.domain.Role;
@@ -28,8 +30,8 @@ public class UserService {
         this.orderRepository = orderRepository;
     }
 
-    public List<User> getFindAllUser(){
-        return this.userRepository.findAll();
+    public Page<User> getFindAllUser(Pageable pageable){
+        return this.userRepository.findAll(pageable);
     }
     public List<User> getFindByEmailUser(String email){
         return this.userRepository.findOneByEmail(email);

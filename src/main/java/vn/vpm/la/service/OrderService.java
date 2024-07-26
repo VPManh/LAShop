@@ -1,8 +1,8 @@
 package vn.vpm.la.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import vn.vpm.la.domain.Order;
 import vn.vpm.la.domain.OrderDetail;
 import vn.vpm.la.domain.User;
@@ -24,8 +24,8 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public List<Order> fetchAllOrders() {
-        return this.orderRepository.findAll();
+    public Page<Order> fetchAllOrders(Pageable pageable) {
+        return this.orderRepository.findAll(pageable);
     }
 
     public Optional<Order> fetchOrderById(long id) {

@@ -1,10 +1,14 @@
 package vn.vpm.la.controller.admin;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import vn.vpm.la.domain.User;
 import vn.vpm.la.service.UploadService;
 import vn.vpm.la.service.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -46,10 +50,28 @@ public class UserController {
     // }
 
     @RequestMapping("/admin/user") // nếu chỉ truyền String vào thì mặc định là doGet
-    public String getViewTableUser(Model model) {
-        List<User> users = this.userService.getFindAllUser();
-        // System.out.println(">>> check user: "+users);
-        model.addAttribute("users", users);
+    public String getViewTableUser(Model model, @RequestParam("page") Optional<String> optional) {
+
+        int page = 1;
+        try {
+            if (optional.isPresent()) {
+                page = Integer.parseInt(optional.get());
+            }else {
+
+            }
+        }catch (Exception e){
+
+        }
+
+        Pageable pageable = PageRequest.of(page - 1,5);
+
+        Page<User> usersPage = this.userService.getFindAllUser(pageable);
+        List<User> userList = usersPage.getContent();
+        model.addAttribute("users", userList);
+
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", usersPage.getTotalPages());
+
         return "admin/user/show";
     }
 
