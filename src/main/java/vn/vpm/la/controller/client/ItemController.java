@@ -136,12 +136,19 @@ public class ItemController {
     @PostMapping("/add-product-from-view-detail")
     public String handleAddProductFromViewDetail(
             @RequestParam("id") long id,
-            @RequestParam("quantity") long quantity,
+            @RequestParam("quantity") String quantityStr,
             HttpServletRequest request) {
 
         HttpSession session = request.getSession(false);
-
         String email = (String) session.getAttribute("email");
+
+        long quantity = 0;
+        try {
+            quantity = Long.parseLong(quantityStr);
+        } catch (NumberFormatException e) {
+            quantity = 1; // Giá trị mặc định
+        }
+
         this.productService.handleAddProductCart(email, id, session, quantity);
 
         return "redirect:/product/" + id;
