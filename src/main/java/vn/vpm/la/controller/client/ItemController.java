@@ -2,8 +2,12 @@ package vn.vpm.la.controller.client;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.tags.shaded.org.apache.regexp.recompile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -152,5 +156,29 @@ public class ItemController {
         this.productService.handleAddProductCart(email, id, session, quantity);
 
         return "redirect:/product/" + id;
+    }
+
+    @GetMapping("/products")
+    public String getPageProducts(Model model, @RequestParam("page") Optional<String> optional) {
+
+        int page = 1;
+        try {
+            if (optional.isPresent()) {
+                page = Integer.parseInt(optional.get());
+            }else {
+
+            }
+        }catch (Exception e) {
+
+        }
+
+        Pageable pageable = PageRequest.of(page - 1 ,6);
+        Page<Product> productPage = this.productService.getAllProduct(pageable);
+        List<Product> products = productPage.getContent();
+
+        model.addAttribute("products", products);
+        model.addAttribute("page", page);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        return "client/product/show";
     }
 }
