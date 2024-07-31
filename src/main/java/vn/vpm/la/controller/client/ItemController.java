@@ -159,26 +159,32 @@ public class ItemController {
     }
 
     @GetMapping("/products")
-    public String getPageProducts(Model model, @RequestParam("page") Optional<String> optional) {
+    public String getPageProducts(Model model
+            , @RequestParam("page") Optional<String> optionalPage
+            , @RequestParam("name") Optional<String> optionalName) {
 
         int page = 1;
         try {
-            if (optional.isPresent()) {
-                page = Integer.parseInt(optional.get());
-            }else {
+            if (optionalPage.isPresent()) {
+                page = Integer.parseInt(optionalPage.get());
+            } else {
 
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
 
         }
 
-        Pageable pageable = PageRequest.of(page - 1 ,6);
-        Page<Product> productPage = this.productService.getAllProduct(pageable);
+        String name = optionalName.isPresent() ? optionalName.get() : "";
+
+        Pageable pageable = PageRequest.of(page - 1, 6);
+
+        Page<Product> productPage = this.productService.getProductWithSpec(pageable, name);
         List<Product> products = productPage.getContent();
 
         model.addAttribute("products", products);
         model.addAttribute("page", page);
         model.addAttribute("totalPages", productPage.getTotalPages());
+
         return "client/product/show";
     }
 }

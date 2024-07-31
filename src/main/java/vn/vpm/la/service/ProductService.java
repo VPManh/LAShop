@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
@@ -37,6 +38,15 @@ public class ProductService {
         return this.productRepository.save(product);
     }
 
+    private Specification<Product> nameLike(String name){
+        return (root, query, criteriaBuilder)
+                -> criteriaBuilder.like(root.get(Product_.NAME), "%"+name+"%");
+    }
+
+    public Page<Product> getProductWithSpec(Pageable pageable, String name) {
+
+        return this.productRepository.findAll(this.nameLike(name),pageable);
+    }
     public Page<Product> getAllProduct(Pageable pageable) {
 
         return this.productRepository.findAll(pageable);

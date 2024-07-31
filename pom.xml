@@ -88,6 +88,30 @@
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-jdbc</artifactId>
 		</dependency>
+		<!--    giải quyết fix: hibernate-jpamodelgen theo chat gpt-->
+		<!-- ///////////////////////////////// -->
+		<!-- JAXB API only -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<!-- JAXB RI, Jakarta XML Binding -->
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>3.0.0</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+			<version>6.4.1.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- ///////////////////////////////// -->
 	</dependencies>
 
 	<build>
