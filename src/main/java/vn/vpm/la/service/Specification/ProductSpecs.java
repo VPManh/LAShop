@@ -43,4 +43,13 @@ public class ProductSpecs {
         return (root, query, criteriaBuilder) -> criteriaBuilder.between(
                 root.get(Product_.PRICE), min, max);
     }
+    // case7
+    public static Specification<Product> matchTarget(String target) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Product_.TARGET), target);
+    }
+
+    // case8
+    public static Specification<Product> matchListTarget(List<String> target) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.in(root.get(Product_.TARGET)).value(target);
+    }
 }
