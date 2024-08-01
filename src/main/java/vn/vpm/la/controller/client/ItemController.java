@@ -16,6 +16,7 @@ import vn.vpm.la.domain.Cart;
 import vn.vpm.la.domain.CartDetail;
 import vn.vpm.la.domain.Product;
 import vn.vpm.la.domain.User;
+import vn.vpm.la.domain.dto.ProductCriteriaDTO;
 import vn.vpm.la.service.ProductService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -159,14 +160,12 @@ public class ItemController {
     }
 
     @GetMapping("/products")
-    public String getPageProducts(Model model
-            , @RequestParam("page") Optional<String> optionalPage
-            , @RequestParam("name") Optional<String> optionalName) {
+    public String getPageProducts(Model model, ProductCriteriaDTO criteriaDTO) {
 
         int page = 1;
         try {
-            if (optionalPage.isPresent()) {
-                page = Integer.parseInt(optionalPage.get());
+            if (criteriaDTO.getPage().isPresent()) {
+                page = Integer.parseInt(criteriaDTO.getPage().get());
             } else {
 
             }
@@ -174,17 +173,48 @@ public class ItemController {
 
         }
 
-        String name = optionalName.isPresent() ? optionalName.get() : "";
+        Pageable pageable = PageRequest.of(page - 1, 60);
 
-        Pageable pageable = PageRequest.of(page - 1, 6);
+//        String name = optionalName.isPresent() ? optionalName.get() : "";
+//        Page<Product> prs = this.productService.getAllProductWithSpec(pageable, name);
 
-        Page<Product> productPage = this.productService.getProductWithSpec(pageable, name);
-        List<Product> products = productPage.getContent();
+        Page<Product> prs = this.productService.getAllProduct(pageable);
+
+        // case 1
+        // double min = minOptional.isPresent() ? Double.parseDouble(minOptional.get())
+        // : 0;
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, min);
+
+        // case 2
+        // double max = maxOptional.isPresent() ? Double.parseDouble(maxOptional.get())
+        // : 0;
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, max);
+
+        // case 3
+        // String factory = factoryOptional.isPresent() ? factoryOptional.get() : "";
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
+        // factory);
+
+        // case 4
+        // List<String> factory = Arrays.asList(factoryOptional.get().split(","));
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
+        // factory);
+
+        // case 5
+        // String price = priceOptional.isPresent() ? priceOptional.get() : "";
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
+        // price);
+
+        // case 6
+        // List<String> price = Arrays.asList(priceOptional.get().split(","));
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
+        // price);
+
+        List<Product> products = prs.getContent();
 
         model.addAttribute("products", products);
         model.addAttribute("page", page);
-        model.addAttribute("totalPages", productPage.getTotalPages());
-
+        model.addAttribute("totalPages", prs.getTotalPages());
         return "client/product/show";
     }
 }
