@@ -160,12 +160,12 @@ public class ItemController {
     }
 
     @GetMapping("/products")
-    public String getPageProducts(Model model, ProductCriteriaDTO criteriaDTO) {
+    public String getPageProducts(Model model, ProductCriteriaDTO productCriteriaDTO, HttpServletRequest request) {
 
         int page = 1;
         try {
-            if (criteriaDTO.getPage().isPresent()) {
-                page = Integer.parseInt(criteriaDTO.getPage().get());
+            if (productCriteriaDTO.getPage().isPresent()) {
+                page = Integer.parseInt(productCriteriaDTO.getPage().get());
             } else {
 
             }
@@ -173,18 +173,32 @@ public class ItemController {
 
         }
 
-        Pageable pageable = PageRequest.of(page - 1, 60);
+        // check sort price
+        Pageable pageable = PageRequest.of(page - 1, 6);
 
-        Page<Product> prs = this.productService.getAllProductWithSpec(pageable,criteriaDTO);
+        if (productCriteriaDTO.getSort() != null && productCriteriaDTO.getSort().isPresent()) {
+            String sort = productCriteriaDTO.getSort().get();
+            if (sort.equals("gia-tang-dan")) {
+                pageable = PageRequest.of(page - 1, 6, Sort.by(Product_.PRICE).ascending());
+            } else if (sort.equals("gia-giam-dan")) {
+                pageable = PageRequest.of(page - 1, 6, Sort.by(Product_.PRICE).descending());
+            }
+        }
+        Page<Product> prs = this.productService.getAllProductWithSpec(pageable,productCriteriaDTO);
 
 //        List<Product> products = prs.getContent();
         List<Product> products = prs.getContent().size() > 0 ? prs.getContent() : new ArrayList<Product>();
 
-        List<Product> products = prs.getContent();
+        String query = request.getQueryString();
+        if(query != null && !query.isBlank()) {
+//            remove pape
+            query = query.replace("page="+page,"");
+        }
 
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", prs.getTotalPages());
+        model.addAttribute("queryString",query);
         return "client/product/show";
     }
 }
