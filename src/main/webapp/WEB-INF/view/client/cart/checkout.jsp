@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Thanh toán - Laptopshop</title>
+    <title> Thanh toán </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -62,15 +62,6 @@
 <!-- Cart Page Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
-        <div class="mb-3">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Thông tin thanh toán</li>
-                </ol>
-            </nav>
-        </div>
-
         <div class="table-responsive">
             <table class="table">
                 <thead>
