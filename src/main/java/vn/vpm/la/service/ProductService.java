@@ -236,8 +236,9 @@ public class ProductService {
                 order.setStatus("PENDING");
 
                 double sum = 0;
-                for(CartDetail cartDetail : cartDetails) {
-                    sum += cartDetail.getPrice();
+                for (CartDetail cartDetail : cartDetails) {
+                    double itemTotal = cartDetail.getPrice() * cartDetail.getQuantity(); // Nhân giá với số lượng
+                    sum += itemTotal; // Cộng vào tổng số tiền
                 }
                 order.setTotalPrice(sum);
                 order = this.orderRepository.save(order);

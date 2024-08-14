@@ -80,13 +80,11 @@
                         </td>
                     </tr>
                 </c:if>
-                <c:forEach var="order" items="${orders}">
+                <c:forEach var="order" items="${orders}" varStatus="status">
                     <tr>
-                        <td colspan="2">Order Id = ${order.id}</td>
-<%--                        <td colspan="2" >Đơn hàng thứ  của bạn</td>--%>
+                        <td colspan="2">Đơn hàng thứ ${status.index + 1}</td>
                         <td colspan="1">
-                            <fmt:formatNumber type="number" value=" ${order.totalPrice}" />
-                            đ
+                            <fmt:formatNumber type="number" value="${order.totalPrice}" /> đ
                         </td>
                         <td colspan="2"></td>
                         <td colspan="1">
@@ -111,8 +109,7 @@
                             </td>
                             <td>
                                 <p class="mb-0 mt-4">
-                                    <fmt:formatNumber type="number" value="${orderDetail.price}" />
-                                    đ
+                                    <fmt:formatNumber type="number" value="${orderDetail.price}" /> đ
                                 </p>
                             </td>
                             <td>
@@ -123,13 +120,11 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="mb-0 mt-4" data-cart-detail-id="${cartDetail.id}">
-                                    <fmt:formatNumber type="number"
-                                                      value="${orderDetail.price * orderDetail.quantity}" /> đ
+                                <p class="mb-0 mt-4">
+                                    <fmt:formatNumber type="number" value="${orderDetail.price * orderDetail.quantity}" /> đ
                                 </p>
                             </td>
                             <td></td>
-
                         </tr>
                     </c:forEach>
                 </c:forEach>
