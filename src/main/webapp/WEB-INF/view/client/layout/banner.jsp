@@ -1,47 +1,46 @@
-<!-- Hero Start -->
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
- 
-<div class="container-fluid py-5 mb-5 hero-header">
-    <div class="container py-5">
-        <div class="row g-5 align-items-center">
-            <div class="col-md-12 col-lg-7">
-                <h4 class="mb-3 text-secondary">100% Chính hãng</h4>
-                <h1 class="mb-5 display-3 text-primary" style="width: 500px;">Hàng cao cấp & chất lượng cao</h1>
-                <div class="position-relative mx-auto">
-                    <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
-                        type="number" placeholder="Tìm kiếm">
-                    <button type="submit"
-                        class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-                        style="top: 0; right: 25%;">Xác nhận</button>
-                </div>
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner"  style="margin-top: 155px !important; ">
+        <div class="carousel-item active">
+            <img src="/client/img/banner1.png" class="d-block w-100 banner-img"  alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <%--                <h5>First slide label</h5>--%>
+                <%--                <p>Some representative placeholder content for the first slide.</p>--%>
             </div>
-            <div class="col-md-12 col-lg-5">
-                <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active rounded">
-                            <img src="/client/img/hero-img-3.png" class="img-fluid w-100 h-100 bg-secondary rounded"
-                                alt="First slide">
-                            <a href="#" class="btn px-4 py-2 text-white rounded">Apple</a>
-                        </div>
-                        <div class="carousel-item rounded">
-                            <img src="/client/img/hero-img-2.png" class="img-fluid w-100 h-100 rounded"
-                                alt="Second slide">
-                            <a href="#" class="btn px-4 py-2 text-white rounded">Thiết bị</a>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/client/img/banner2.png" class="d-block w-100 banner-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <%--                <h5>Second slide label</h5>--%>
+                <%--                <p>Some representative placeholder content for the second slide.</p>--%>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/client/img/banner3.webp" class="d-block w-100 banner-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <%--                <h5>Third slide label</h5>--%>
+                <%--                <p>Some representative placeholder content for the third slide.</p>--%>
             </div>
         </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
-<!-- Hero End -->
+
+<style>
+    .banner-img {
+        padding: 10px;
+        height: 700px;
+        object-fit: cover; /* Hoặc bạn có thể thử object-fit: contain; tuỳ thuộc vào yêu cầu hiển thị hình ảnh */
+    }
+</style>

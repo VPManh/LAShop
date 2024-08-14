@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
 import vn.vpm.la.domain.*;
+import vn.vpm.la.domain.dto.ProductCriteriaDTO;
 import vn.vpm.la.repository.*;
 import vn.vpm.la.service.Specification.ProductSpecs;
 

@@ -4,9 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
-<meta name="author" content="Hỏi Dân IT" />
-<title>Detail Order - Hỏi Dân IT</title>
+<title>Detail Order</title>
 <link href="/css/styles.css" rel="stylesheet" />
 
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"

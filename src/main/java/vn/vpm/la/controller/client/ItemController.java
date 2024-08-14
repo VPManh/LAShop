@@ -8,14 +8,12 @@ import org.eclipse.tags.shaded.org.apache.regexp.recompile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import vn.vpm.la.domain.Cart;
-import vn.vpm.la.domain.CartDetail;
-import vn.vpm.la.domain.Product;
-import vn.vpm.la.domain.User;
+import vn.vpm.la.domain.*;
 import vn.vpm.la.domain.dto.ProductCriteriaDTO;
 import vn.vpm.la.service.ProductService;
 
