@@ -146,7 +146,8 @@ public class UserController {
             // currentUser.setEmail(user.getEmail());
 
             // vì sử dụng đối tượng Role trong User nên phải gọi như vây
-            currentUser.getRole().setName(user.getRole().getName());
+//            currentUser.getRole().setName(user.getRole().getName());
+            currentUser.setRole(this.userService.getRoleByName(user.getRole().getName()));
 
             this.userService.handleSaveUser(currentUser);
         }
